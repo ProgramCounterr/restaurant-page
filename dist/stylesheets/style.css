@@ -1,0 +1,44 @@
+header {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+}
+
+/* separate left and right header and footer sections */
+nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #222;
+    font-size: 14px;
+}
+/* center elements of header and footer sections vertically */
+ul {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+/* space out elements in header and footer from each other */
+nav ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: #9d9d9d;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+nav ul li:hover, nav ul li:focus {
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+#background-img {
+    width: 100%;
+}
+

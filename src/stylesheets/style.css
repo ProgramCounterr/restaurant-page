@@ -1,0 +1,42 @@
+header {
+    height: 30px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    font-size: 15px;
+}
+
+/* separate left and right header and footer sections */
+nav {
+    display: flex;
+    height: 100%;
+}
+/* center elements of header and footer sections vertically */
+ul {
+    display: flex;
+    align-items: center;
+}
+
+/* space out elements in header and footer from each other */
+li {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    float: right;
+}
+
+/* make links underline on hover and have a thin dotted border on focus */
+a {
+    text-decoration: none;
+    color: rgb(100, 100, 100)
+}
+
+a:focus {
+    outline: 0px;
+    border: 1px dotted;
+}
+
+a:hover {
+    
+}
+
