@@ -46,6 +46,7 @@ let loadHomePage = function () {
     welcome.setAttribute('id', 'welcome-text');
     let captainK = document.createElement('span');
     captainK.textContent = "Captain K";
+    captainK.setAttribute('id', 'captain-k');
     captainK.classList.add('bold');
 
     text.append(welcome, document.createElement('br'), captainK);

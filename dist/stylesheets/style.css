@@ -69,13 +69,19 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
 
 #welcome-text {
     position: relative;
-    left: 40px;
+    left: 20%;
+    bottom: 10px;
+    font-family: "Comic Sans MS";
     font-size: 57px;
 }
 
-.bold {
-    font-weight: bolder;
+#captain-k {
     font-size: 93px;
+    font-family: "Arial Black", sans-serif;
+}
+
+.bold {
+    font-weight: 800;
 }
 
 div#background-img {
