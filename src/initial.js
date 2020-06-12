@@ -1,4 +1,4 @@
-let loadHeader = function() {
+const loadHeader = function() {
         let container = document.querySelector('div#container');
 
         //make header elements
@@ -36,7 +36,7 @@ let loadHeader = function() {
         container.prepend(header);
 }
 
-let loadHomePage = function () {
+const loadHomePage = function () {
     let content = document.querySelector('div#content');
 
     //home page content
@@ -59,7 +59,7 @@ let loadHomePage = function () {
     content.append(backgroundImg, text);
 }
 
-let loadSite = function() {
+const loadSite = function() {
     loadHeader();
     loadHomePage();
 }

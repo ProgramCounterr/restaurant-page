@@ -26,14 +26,14 @@ function addEventListeners(element, eventsString, listener) {
     }
 }
 
-let home = document.querySelector('#home');
+const home = document.querySelector('#home');
 addEventListeners(home, 'click keydown', () => {
     clearContent();
     loadHomePage();
 });
 
 
-let about = document.querySelector('#about-us');
+const about = document.querySelector('#about-us');
 addEventListeners(about, 'click keydown', () => {
     clearContent();
     loadAboutPage();

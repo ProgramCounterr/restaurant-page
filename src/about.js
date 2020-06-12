@@ -1,4 +1,4 @@
-let loadAboutPage = function () {
+const loadAboutPage = function () {
     let container = document.querySelector('div#content');
 
     /*let backgroundImage = document.createElement('div');
