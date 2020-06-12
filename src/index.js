@@ -1,8 +1,8 @@
 /* To do:
--Add event handler for pressing enter on a focused navbar element
 -Add content for other pages besides home page
 */
 import {loadHomePage, loadSite} from './initial.js';
+import loadAboutPage from './about.js';
 
 loadSite();
 
@@ -33,8 +33,8 @@ addEventListeners(home, 'click keydown', () => {
 });
 
 
-let order = document.querySelector('#order-online');
-order.addEventListener('click', ()=> {
+let about = document.querySelector('#about-us');
+addEventListeners(about, 'click keydown', () => {
     clearContent();
+    loadAboutPage();
 });
-

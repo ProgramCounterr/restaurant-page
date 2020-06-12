@@ -54,9 +54,16 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
     outline: none;
 }
 
-#content {
+#container, #content {
     height: 100%;
     width: 100%;
+}
+
+div#background-img {
+    height: 100%;
+    width: 100%;
+    background: url(https://captainkva.com/images/slider/slider1.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 
 #welcome-header{
@@ -77,17 +84,11 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
 
 #captain-k {
     font-size: 93px;
-    font-family: "Arial Black", sans-serif;
+    font-family: "Arial Black";
 }
 
 .bold {
     font-weight: 800;
 }
 
-div#background-img {
-    height: 100%;
-    width: 100%;
-    background: url(https://captainkva.com/images/slider/slider1.jpg) no-repeat center center fixed;
-    background-size: cover;
-}
 
