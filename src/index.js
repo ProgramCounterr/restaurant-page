@@ -2,7 +2,7 @@
 -Add event handler for pressing enter on a focused navbar element
 -Add content for other pages besides home page
 */
-import {loadHeader, loadHomePage, loadSite} from './initial.js';
+import {loadHomePage, loadSite} from './initial.js';
 
 loadSite();
 
@@ -19,20 +19,19 @@ function clearContent() {
 * @param {string} eventNames - space separated list of event names, e.g. 'click change'
 * @param {Function} listener - function to attach for each event as a listener
 */
-function addEventListeners(element, events, listener) {
-    
+function addEventListeners(element, eventsString, listener) {
+    let events = eventsString.split(' ');
+    for(let i=0; i<events.length; i++) {
+        element.addEventListener(events[i], listener);
+    }
 }
 
 let home = document.querySelector('#home');
-home.addEventListener('click', () => {
+addEventListeners(home, 'click keydown', () => {
     clearContent();
     loadHomePage();
 });
 
-home.addEventListener('keydown', () => {
-    clearContent();
-    loadHomePage();
-});
 
 let order = document.querySelector('#order-online');
 order.addEventListener('click', ()=> {

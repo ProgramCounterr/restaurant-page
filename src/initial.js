@@ -1,5 +1,5 @@
 let loadHeader = function() {
-        let body = document.querySelector('body');
+        let container = document.querySelector('div#content');
 
         //make header elements
         let header = document.createElement('header');
@@ -12,9 +12,13 @@ let loadHeader = function() {
         home.setAttribute('tabindex', '1');
 
         let orderOnline = document.createElement('li');
-        orderOnline.textContent = "Order Online";
-        orderOnline.setAttribute('id', 'order-online');
-        orderOnline.setAttribute('tabindex', '2');
+        let link = document.createElement('a');
+        link.textContent = "Order Online";
+        link.setAttribute('id', 'order-online');
+        link.setAttribute('tabindex', '2');
+        link.setAttribute('href', 'https://qmenu.us/#/captain-k-s-seafood');
+        orderOnline.appendChild(link);
+
 
         let contactUs = document.createElement('li');
         contactUs.textContent = "Contact Us";
@@ -25,18 +29,27 @@ let loadHeader = function() {
         ul.append(home, orderOnline, contactUs);
         navBar.appendChild(ul);
         header.appendChild(navBar);
-        body.prepend(header);
+        container.append(header);
 }
 
 let loadHomePage = function () {
     let container = document.querySelector('div#content');
 
     //home page content
-    let backgroundImg = document.createElement('img');
-    backgroundImg.setAttribute('id', 'background-img');
-    backgroundImg.setAttribute('src', 'https://captainkva.com/images/3.jpg');
+    let imgContainer = document.createElement('div');
+    imgContainer.setAttribute('id', 'background-img');
 
-    container.append(backgroundImg);
+    let text = document.createElement('h1');
+    text.setAttribute('id', 'welcome-header');
+    let welcome = document.createElement('span');
+    welcome.textContent = "Welcome to ";
+    welcome.setAttribute('id', 'welcome-text');
+    let captainK = document.createElement('span');
+    captainK.textContent = "Captain K";
+    captainK.classList.add('bold');
+
+    text.append(welcome, document.createElement('br'), captainK);
+    container.append(imgContainer, text);
 }
 
 let loadSite = function() {
@@ -44,4 +57,4 @@ let loadSite = function() {
     loadHomePage();
 }
 
-export {loadHeader, loadHomePage, loadSite };
+export {loadHomePage, loadSite};

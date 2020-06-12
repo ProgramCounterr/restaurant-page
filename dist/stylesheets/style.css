@@ -1,11 +1,23 @@
-header {
-    height: 50px;
-    width: 100%;
-    position: fixed;
-    top: 0px;
+html {
+    scroll-padding-top: 50px;
+    height: 100vh;
+    width: 100vw;
 }
 
-/* separate left and right header and footer sections */
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 50px;
+    width: 100%;
+}
+
 nav {
     height: 100%;
     width: 100%;
@@ -14,31 +26,62 @@ nav {
     background-color: #222;
     font-size: 14px;
 }
-/* center elements of header and footer sections vertically */
+/* center elements of header vertically */
 ul {
     display: flex;
     align-items: center;
     margin-right: 100px;
 }
 
-/* space out elements in header and footer from each other */
+a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #9d9d9d;
+}
+/* space out elements in header from each other */
 nav ul li {
     display: flex;
     align-items: center;
     padding: 15px;
     color: #9d9d9d;
-    font-family: 'Raleway', sans-serif !important;
 }
 
-nav ul li:hover, nav ul li:focus {
+nav ul li:hover, nav ul li:focus, a:hover, a:focus {
     color: white;
     cursor: pointer;
     outline: none;
 }
 
-
-
-#background-img {
+#content {
+    height: 100%;
     width: 100%;
+}
+
+#welcome-header{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+#welcome-text {
+    position: relative;
+    left: 40px;
+    font-size: 57px;
+}
+
+.bold {
+    font-weight: bolder;
+    font-size: 93px;
+}
+
+div#background-img {
+    height: 100%;
+    width: 100%;
+    background: url(https://captainkva.com/images/slider/slider1.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 
