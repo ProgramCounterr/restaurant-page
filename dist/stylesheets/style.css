@@ -66,7 +66,7 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
     background: no-repeat center center/cover fixed;
 }
 
-#welcome-header{
+#welcome-header {
     color: white;
 }
 
@@ -79,16 +79,49 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
 }
 
 #captain-k {
+    position: relative;
     font-size: 93px;
     font-family: "Arial Black";
 }
 
-h2#about {
+#about-header {
     position: absolute;
-    top: 25%;
+    top: 10%;
+    left: 40%;
     color: rgb(231, 179, 37);
     font-family: "Comic Sans MS";
     font-size: 57px;
+}
+
+#about-text {
+    position: absolute;
+    margin-left: 25%;
+    top: 25%;
+}
+
+#about-images-container {
+    position: absolute;
+    bottom: 50px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    height: 330px;
+    width: auto;
+    padding: 10px;
 }
 
 .center {
@@ -96,10 +129,6 @@ h2#about {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.bold {
-    font-weight: 800;
 }
 
 
