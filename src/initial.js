@@ -40,11 +40,13 @@ let loadHomePage = function () {
     let content = document.querySelector('div#content');
 
     //home page content
-    let backgroundImage = document.createElement('div');
-    backgroundImage.setAttribute('id', 'background-img');
-
+    let backgroundImg = document.createElement('div');
+    backgroundImg.classList.add('background-image');
+    backgroundImg.style.cssText = "background-image: url(https://captainkva.com/images/slider/slider1.jpg)";
+    
     let text = document.createElement('h1');
     text.setAttribute('id', 'welcome-header');
+    text.classList.add('center');
     let welcome = document.createElement('span');
     welcome.textContent = "Welcome to ";
     welcome.setAttribute('id', 'welcome-text');
@@ -54,7 +56,7 @@ let loadHomePage = function () {
     captainK.classList.add('bold');
     
     text.append(welcome, document.createElement('br'), captainK);
-    content.append(backgroundImage, text);
+    content.append(backgroundImg, text);
 }
 
 let loadSite = function() {
