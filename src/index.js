@@ -1,11 +1,11 @@
 /* To do:
 -Add content for other pages besides home page
 -Fix resizing/moving elements
+-Make keydown tabbing only work for enter key
 */
 import {loadHomePage, loadSite} from './initial.js';
 import loadAboutPage from './about.js';
-
-loadSite();
+import loadContactPage from './contact.js';
 
 /**
  * clears content of the page
@@ -27,14 +27,18 @@ function addEventListeners(element, eventsString, listener) {
     }
 }
 
-const home = document.querySelector('#home');
-addEventListeners(home, 'click keydown', () => {
-    clearContent();
-    loadHomePage();
-});
+loadSite();
 
+const home = document.querySelector('#home');
 const about = document.querySelector('#about-us');
-addEventListeners(about, 'click keydown', () => {
-    clearContent();
-    loadAboutPage();
-});
+const contact = document.querySelector('#contact-us');
+
+let navbarTabs = [home, about, contact];
+let navbarFuncs = [loadHomePage, loadAboutPage, loadContactPage];
+
+for(let i=0; i<navbarTabs.length; i++) {
+    addEventListeners(navbarTabs[i], 'click keydown', () => {
+        clearContent();
+        navbarFuncs[i]();
+    });
+}
