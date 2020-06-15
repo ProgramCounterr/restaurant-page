@@ -18,16 +18,19 @@ const loadAboutPage = function () {
     let img1 = document.createElement('img');
     img1.setAttribute('src', 'https://ketocookingchristian.com/wp-content/uploads/2019/11/Keto-Fried-Shrimp.jpg');
     img1.setAttribute('alt', 'Fried shrimp and a side of cocktail sauce');
+    img1.classList.add('about-image');
     let imgContainer2 = document.createElement('div');
     imgContainer2.classList.add('column');
     let img2 = document.createElement('img');
     img2.setAttribute('src', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191907-air-fryer-fish-0264-landscape-pf-1565020342.png?crop=0.633xw:0.949xh;0.187xw,0.0230xh&resize=480:*');
     img2.setAttribute('alt', 'Fried whiting fish with fries and a side of ranch');
+    img2.classList.add('about-image');
     let imgContainer3 = document.createElement('div');
     imgContainer3.classList.add('column');
     let img3 = document.createElement('img');
     img3.setAttribute('src', 'https://www.readersdigest.ca/wp-content/uploads/1970/08/fried-calamari-1024x671.jpg');
     img3.setAttribute('alt', 'Fried calamari rings');
+    img3.classList.add('about-image');
     //append elements
     imgContainer1.appendChild(img1);
     imgContainer2.appendChild(img2);

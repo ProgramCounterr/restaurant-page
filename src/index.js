@@ -2,6 +2,7 @@
 -Add content for other pages besides home page
 -Fix resizing/moving elements
 -Make keydown tabbing only work for enter key
+-refactor css
 */
 import {loadHomePage, loadSite} from './initial.js';
 import loadAboutPage from './about.js';

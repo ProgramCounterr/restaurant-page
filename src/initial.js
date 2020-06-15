@@ -5,7 +5,7 @@ const loadHeader = function() {
         let header = document.createElement('header');
         let navBar = document.createElement('nav');
         let ul = document.createElement('ul');
-
+        
         let home = document.createElement('li');
         home.textContent = "Home";
         home.setAttribute('id', 'home');
