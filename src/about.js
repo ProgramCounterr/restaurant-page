@@ -1,15 +1,15 @@
 const loadAboutPage = function () {
     let content = document.querySelector('div#content');
-
+    //"About Us" header
     let header = document.createElement('h2');
-    header.textContent = "About";
+    header.textContent = "About Us";
     header.classList.add('bold');
     header.setAttribute('id', 'about-header');
-
+    //description
     let text = document.createElement('p');
     text.textContent = "Cheap, delicious, crispy, fried seafood accompanied by specially crafted homemade sauces";
     text.setAttribute('id', 'about-text');
-
+    //images
     let images = document.createElement('div');
     images.classList.add('row');
     images.setAttribute('id', 'about-images-container');
@@ -28,7 +28,7 @@ const loadAboutPage = function () {
     let img3 = document.createElement('img');
     img3.setAttribute('src', 'https://www.readersdigest.ca/wp-content/uploads/1970/08/fried-calamari-1024x671.jpg');
     img3.setAttribute('alt', 'Fried calamari rings');
-
+    //append elements
     imgContainer1.appendChild(img1);
     imgContainer2.appendChild(img2);
     imgContainer3.appendChild(img3);
