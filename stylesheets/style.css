@@ -17,6 +17,7 @@ header {
     left: 0px;
     height: 50px;
     width: 100%;
+    z-index: 1000;
 }
 
 nav {
@@ -85,27 +86,30 @@ nav ul li:hover, nav ul li:focus, a:hover, a:focus {
 }
 
 #about-header {
-    position: absolute;
+    position: relative;
     top: 10%;
     left: 40%;
+    width: 50%;
+    min-width: 300px;
     color: rgb(231, 179, 37);
     font-family: "Comic Sans MS";
     font-size: 57px;
 }
 
 #about-text {
-    position: absolute;
-    margin-left: 25%;
-    top: 25%;
+    position: relative;
+    left: 25%;
+    top: 20%;
+    width: 50%;
 }
 
 #about-images-container {
-    position: absolute;
-    bottom: 50px;
+    position: relative;
+    top: 30%;
 }
 
 img {
-    width: 100%;
+    min-width: 100%;
     height: 100%;
 }
 
