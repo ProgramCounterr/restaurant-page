@@ -1,6 +1,6 @@
 /* To do:
 -Add content for other pages besides home page
--Fix resizing window elements
+-Fix resizing/moving elements
 */
 import {loadHomePage, loadSite} from './initial.js';
 import loadAboutPage from './about.js';
