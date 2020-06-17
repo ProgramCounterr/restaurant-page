@@ -76,6 +76,7 @@ h2 {
 #welcome-header {
     border: 10px double;
     color: white;
+    padding: 16px;
 }
 
 #welcome-text {
