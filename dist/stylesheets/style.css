@@ -28,12 +28,6 @@ nav {
     background-color: #222;
     font-size: 14px;
 }
-/* center elements of header vertically */
-nav ul {
-    display: flex;
-    align-items: center;
-    margin-right: 100px;
-}
 
 a {
     text-decoration: none;
@@ -42,6 +36,14 @@ a {
     height: 100%;
     color: #9d9d9d;
 }
+
+/* center elements of header vertically */
+nav ul {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
 /* space out elements in header from each other */
 nav ul li {
     display: flex;
@@ -50,11 +52,11 @@ nav ul li {
     color: #9d9d9d;
 }
 
-nav ul li:hover, nav ul li:focus, a:hover, a:focus {
-    color: white;
-    cursor: pointer;
-    outline: none;
-}
+    nav ul li:hover, nav ul li:focus, a:hover, a:focus {
+        color: white;
+        cursor: pointer;
+        outline: none;
+    }
 
 #content {
     height: 100%;
@@ -68,7 +70,6 @@ h2 {
 
 .background-image {
     height: 100%;
-    width: 100%;
     background: no-repeat center center/cover fixed;
 }
 
@@ -137,9 +138,9 @@ h2 {
     margin-left: 10px;
 }
 
-#phone-number:hover {
-    color: blue;
-}
+    #phone-number:hover {
+        color: blue;
+    }
 
 #schedule-container {
     width: 300px;
@@ -153,6 +154,47 @@ h2 {
     width: 100%;
 }
 
+#dots {
+    display: flex;
+    position: absolute;
+    left: 40%;
+    bottom: 10px;
+    z-index: 1000;
+    justify-content: space-evenly;
+    width: 250px;
+}
+.dot {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.left-arrow, .right-arrow {  
+    cursor: pointer;  
+    position: absolute;  
+    top: 50%;
+    height: 50px;
+    width: auto;
+    padding: 16px;
+    padding-bottom: 0px;
+    color: white;  
+    font-weight: bold;  
+    font-size: 18px;  
+    transition: 0.6s ease;  
+    border-radius: 0 3px 3px 0;  
+}
+
+.right-arrow {  
+    right: 0;  
+    border-radius: 3px 0 0 3px;  
+}  
+    .left-arrow:hover, .right-arrow:hover {  
+        background-color: rgba(115, 115, 115, 0.8);  
+    }
+    
 .bold {
     font-weight: 800;
 }
