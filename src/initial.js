@@ -1,3 +1,6 @@
+/**
+ * make header DOM elements (the navigation bar)
+ */
 const loadHeader = function() {
         let container = document.querySelector('div#container');
 
@@ -36,10 +39,42 @@ const loadHeader = function() {
         container.prepend(header);
 }
 
-// slide show logic
-const slideShow = ((slideIndex) => {
+/**
+ * load the DOM elements for the slideshow
+ * @param {object} container - DOM element that contains the slideshow images
+ * @param {*} imgs - images in the slideshow
+ */
+const loadSlideshowDOM = function (container, imgs) {
+    // make navigation arrows
+    let leftArrow = document.createElement('a');
+    leftArrow.textContent = '❮';
+    leftArrow.classList.add('left-arrow');
+    let rightArrow = document.createElement('a');
+    rightArrow.textContent = '❯';
+    rightArrow.classList.add('right-arrow');
 
-    // slide show timer
+    //make navigation dots
+    let dotsContainer = document.createElement('div');
+    dotsContainer.setAttribute('id', 'dots');
+    for(let i=0; i<imgs.length; i++) {
+        let img = document.createElement('div');
+        img.classList.add('slideshow-image');
+        img.style.cssText = `background-image: url(${imgs[i]})`;
+
+        let dot = document.createElement('div');
+        dot.classList.add('dot');
+        dotsContainer.append(dot);
+        container.append(img);
+    }
+    container.append(leftArrow, rightArrow, dotsContainer);
+}
+
+/**
+ * logic for creating dynamic 'slideshow' background of home page
+ */
+const slideshow = ((slideIndex) => {
+
+    // slideshow timer
     const Timer = (fn, t) => {
         let timerObj = setInterval(fn, t);
 
@@ -65,94 +100,86 @@ const slideShow = ((slideIndex) => {
             start();
         }
 
-        return { stop, start, reset };
+        return { 'intervalTime': t, stop, start, reset };
     };
 
+    // change slide by n amount and reset timer
     const nextSlide = (n) => {  
-        displaySlide(slideIndex += n);  
+        displaySlide(slideIndex += n);
     }  
     
+    // show slide n
     const currentSlide = (n) => {
         displaySlide(slideIndex = n);
     }
 
-    let interval = 5000;
-    let timer = Timer(() => nextSlide(1), interval);
-
+    // function to control which slide is presented
     const displaySlide = (n) => {   
-        let slides = document.getElementsByClassName("background-image");
+        let slides = document.getElementsByClassName("slideshow-image");
         let dots = document.getElementsByClassName("dot");
-        if (n >= slides.length) { slideIndex = 0 }  
-        if (n < 0) { slideIndex = slides.length - 1 }  
+        if (n >= slides.length) slideIndex = 0;
+        if (n < 0) slideIndex = slides.length - 1;
         for (let i = 0; i < slides.length; i++) {  
             slides[i].style.display = "none"; // make all slides invisible
             dots[i].style.backgroundColor = "transparent"; 
         }  
         slides[slideIndex].style.display = "block"; // make given slide visible
-        dots[slideIndex].style.backgroundColor = "white";
-        timer.reset(interval);
+        dots[slideIndex].style.backgroundColor = "white"; // fill dot corresponding to current slide
     }
+
     /**
      * initializes a slideshow that changes slides after a given interval
      * @param {number} intervalTime - milliseconds after which to change the slide
+     * @param {object} container - DOM element ot store the slideshow images
+     * @param {object} imgs - array of strings representing slideshow images to be used in the slideshow
      */
-    function initialize (intervalTime) {
-        if(!!intervalTime) {
-            interval = intervalTime;
-            timer.reset(interval);
-        }
+    function initialize (intervalTime, container, imgs) {
+        loadSlideshowDOM(container, imgs);
+
+        let timer = Timer(() => nextSlide(1), intervalTime);
+
         let leftArrow = document.querySelector('a.left-arrow');
-        leftArrow.addEventListener('click', () => nextSlide(-1));
         let rightArrow = document.querySelector('a.right-arrow');
-        rightArrow.addEventListener('click', () => nextSlide(1));
+        // if user manually changes slides, change slide and reset timer
+        leftArrow.addEventListener('click', () => { 
+            nextSlide(-1); 
+            timer.reset(timer.intervalTime); 
+        });
+        rightArrow.addEventListener('click', () => { 
+            nextSlide(-1); 
+            timer.reset(timer.intervalTime); 
+        });
         window.addEventListener('keydown', (keyPress) => {
-            if (keyPress.keyCode === 37) leftArrow.click(); // if left arrow key is pressed
-            else if (keyPress.keyCode === 39) rightArrow.click(); // if right arrow key is pressed
+            if (keyPress.keyCode === 37) leftArrow.click(); // if left arrow key is pressed, trigger event
+            else if (keyPress.keyCode === 39) rightArrow.click(); // if right arrow key is pressed, trigger event
         });
         
         let dots = document.getElementsByClassName("dot");
         for(let i=0; i<dots.length; i++) {
-            dots[i].addEventListener('click', () => currentSlide(i));
+            dots[i].addEventListener('click', () => currentSlide(i)); // display slide corresponding to dot
         }
-        currentSlide(0);
+
+        currentSlide(0); // display slideshow starting with first slide
     }
 
     return { initialize };
 
 })(0);
 
+/**
+ * load home page content
+ */
 const loadHomePage = function () {
     let content = document.querySelector('div#content');
 
-    // home page background images
-    let backgroundImgs = ['https://captainkva.com/images/comment-bg.jpg',
+    // initialize slideshow images
+    let slideshowImgs = ['https://captainkva.com/images/comment-bg.jpg',
         'https://captainkva.com/images/slider/slider1.jpg',
         'https://bit.ly/2UTed50',
         'https://img.delicious.com.au/wBUwni4k/del/2018/09/seafood-boil-88619-2.jpg',
         'https://www.simplyrecipes.com/wp-content/uploads/2018/07/Seafood-Paella-HORIZONTAL.jpg'];
 
-    let leftArrow = document.createElement('a');
-    leftArrow.textContent = '❮';
-    leftArrow.classList.add('left-arrow');
-    let rightArrow = document.createElement('a');
-    rightArrow.textContent = '❯';
-    rightArrow.classList.add('right-arrow');
-
-    let dotsContainer = document.createElement('div');
-    dotsContainer.setAttribute('id', 'dots');
-    for(let i=0; i<backgroundImgs.length; i++) {
-        let backgroundImg = document.createElement('div');
-        backgroundImg.classList.add('background-image');
-        backgroundImg.style.cssText = `background-image: url(${backgroundImgs[i]})`;
-
-        let dot = document.createElement('div');
-        dot.classList.add('dot');
-        dotsContainer.append(dot);
-        content.append(backgroundImg);
-    }
-    content.append(leftArrow, rightArrow, dotsContainer);
-
-    slideShow.initialize();
+    slideshow.initialize(5000, content, slideshowImgs);
 
     // home page text content
     let text = document.createElement('h1');
@@ -170,6 +197,9 @@ const loadHomePage = function () {
     content.appendChild(text);
 }
 
+/**
+ * load intial site (home page and header)
+ */
 const loadSite = function() {
     loadHeader();
     loadHomePage();
