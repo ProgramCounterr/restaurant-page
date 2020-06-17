@@ -1,3 +1,8 @@
+/** GLOBALS
+ * objects: window
+ * functions: setInterval
+ */
+
 /**
  * make header DOM elements (the navigation bar)
  */
@@ -72,11 +77,11 @@ const loadSlideshowDOM = function (container, imgs) {
 /**
  * logic for creating dynamic 'slideshow' background of home page
  */
-const slideshow = ((slideIndex) => {
+const slideshow = ((slideIndex, intervalTime) => {
 
     // slideshow timer
     const Timer = (fn, t) => {
-        let timerObj = setInterval(fn, t);
+        let timerObj = null;
 
         const stop = function() {
             if (timerObj) {
@@ -89,8 +94,8 @@ const slideshow = ((slideIndex) => {
         const start = function() {
             if (!timerObj) {
                 stop();
-                timerObj = setInterval(fn, t);
             }
+            timerObj = setInterval(fn, t);
         }
 
         // start with new or original interval, stop current interval
@@ -100,7 +105,7 @@ const slideshow = ((slideIndex) => {
             start();
         }
 
-        return { 'intervalTime': t, stop, start, reset };
+        return { stop, start, reset };
     };
 
     // change slide by n amount and reset timer
@@ -122,37 +127,51 @@ const slideshow = ((slideIndex) => {
         for (let i = 0; i < slides.length; i++) {  
             slides[i].style.display = "none"; // make all slides invisible
             dots[i].style.backgroundColor = "transparent"; 
-        }  
+        }        
         slides[slideIndex].style.display = "block"; // make given slide visible
         dots[slideIndex].style.backgroundColor = "white"; // fill dot corresponding to current slide
     }
 
+    let timer = Timer(() => {
+        let slides = document.getElementsByClassName("slideshow-image");
+        if(!slides.length) { // if there are no slides on the page
+            window.removeEventListener('keydown', arrowKeyFunc);
+            timer.stop();
+        } else {
+            nextSlide(1);
+        }
+    }, intervalTime);
+
+    const arrowClick = (leftOrRight) => {
+        if(leftOrRight === 'left') nextSlide(-1);
+        else if(leftOrRight === 'right') nextSlide(1);
+        timer.reset(intervalTime);
+    };
+
+    function arrowKeyFunc (keyPress) {
+            if (keyPress.keyCode === 37) arrowClick('left'); // if left arrow key is pressed, trigger event
+            else if (keyPress.keyCode === 39) arrowClick('right'); // if right arrow key is pressed, trigger event
+    };
+
     /**
      * initializes a slideshow that changes slides after a given interval
-     * @param {number} intervalTime - milliseconds after which to change the slide
      * @param {object} container - DOM element ot store the slideshow images
      * @param {object} imgs - array of strings representing slideshow images to be used in the slideshow
+     * @param {number} intervalTime - optional argument specifying milliseconds after which to change the slide
      */
-    function initialize (intervalTime, container, imgs) {
+    function initialize (container, imgs, newIntervalTime=intervalTime) {
         loadSlideshowDOM(container, imgs);
-
-        let timer = Timer(() => nextSlide(1), intervalTime);
 
         let leftArrow = document.querySelector('a.left-arrow');
         let rightArrow = document.querySelector('a.right-arrow');
+
+        intervalTime = newIntervalTime;
+
         // if user manually changes slides, change slide and reset timer
-        leftArrow.addEventListener('click', () => { 
-            nextSlide(-1); 
-            timer.reset(timer.intervalTime); 
-        });
-        rightArrow.addEventListener('click', () => { 
-            nextSlide(-1); 
-            timer.reset(timer.intervalTime); 
-        });
-        window.addEventListener('keydown', (keyPress) => {
-            if (keyPress.keyCode === 37) leftArrow.click(); // if left arrow key is pressed, trigger event
-            else if (keyPress.keyCode === 39) rightArrow.click(); // if right arrow key is pressed, trigger event
-        });
+        leftArrow.addEventListener('click', () => arrowClick('left'));
+        rightArrow.addEventListener('click', () => arrowClick('right'));
+
+        window.addEventListener('keydown', arrowKeyFunc);
         
         let dots = document.getElementsByClassName("dot");
         for(let i=0; i<dots.length; i++) {
@@ -160,11 +179,13 @@ const slideshow = ((slideIndex) => {
         }
 
         currentSlide(0); // display slideshow starting with first slide
+        timer.reset(intervalTime);
+
     }
 
     return { initialize };
 
-})(0);
+})(0, 5000);
 
 /**
  * load home page content
@@ -179,7 +200,7 @@ const loadHomePage = function () {
         'https://img.delicious.com.au/wBUwni4k/del/2018/09/seafood-boil-88619-2.jpg',
         'https://www.simplyrecipes.com/wp-content/uploads/2018/07/Seafood-Paella-HORIZONTAL.jpg'];
 
-    slideshow.initialize(5000, content, slideshowImgs);
+    slideshow.initialize(content, slideshowImgs);
 
     // home page text content
     let text = document.createElement('h1');
