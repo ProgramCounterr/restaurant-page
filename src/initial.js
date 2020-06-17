@@ -114,7 +114,7 @@ const slideShow = ((slideIndex) => {
         for(let i=0; i<dots.length; i++) {
             dots[i].addEventListener('click', () => currentSlide(i));
         }
-        displaySlide(1);
+        currentSlide(0);
     }
 
     return { initialize };
