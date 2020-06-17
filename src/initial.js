@@ -127,7 +127,7 @@ const loadHomePage = function () {
     // home page background images
     let backgroundImgs = ['https://captainkva.com/images/comment-bg.jpg',
         'https://captainkva.com/images/slider/slider1.jpg',
-        'https://assets.epicurious.com/photos/5764583142e4a5ed66d1df6c/2:1/w_1260%2Ch_630/seafood-paella.jpg',
+        'https://bit.ly/2UTed50',
         'https://img.delicious.com.au/wBUwni4k/del/2018/09/seafood-boil-88619-2.jpg',
         'https://www.simplyrecipes.com/wp-content/uploads/2018/07/Seafood-Paella-HORIZONTAL.jpg'];
 

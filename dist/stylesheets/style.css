@@ -74,6 +74,7 @@ h2 {
 }
 
 #welcome-header {
+    border: 10px double;
     color: white;
 }
 
