@@ -6,16 +6,16 @@
 -lint js files
 -add slideshow on homepage
 */
-import {loadHomePage, loadSite} from './initial.js';
-import loadAboutPage from './about.js';
-import loadContactPage from './contact.js';
+import { loadHomePage, loadSite } from './initial';
+import loadAboutPage from './about';
+import loadContactPage from './contact';
 
 /**
  * clears content of the page
  */
 function clearContent() {
-    let content = document.querySelector('div#content');
-    content.innerHTML = "";
+  const content = document.querySelector('div#content');
+  content.innerHTML = '';
 }
 
 loadSite();
@@ -24,18 +24,18 @@ const home = document.querySelector('#home');
 const about = document.querySelector('#about-us');
 const contact = document.querySelector('#contact-us');
 
-let navbarTabs = [home, about, contact];
-let navbarFuncs = [loadHomePage, loadAboutPage, loadContactPage];
+const navbarTabs = [home, about, contact];
+const navbarFuncs = [loadHomePage, loadAboutPage, loadContactPage];
 
-for(let i=0; i<navbarTabs.length; i++) {
-    navbarTabs[i].addEventListener('click', () => {
-        clearContent();
-        navbarFuncs[i]();
-    });
-    navbarTabs[i].addEventListener('keydown', (keyPress) => {
-        if(keyPress.keyCode === 13) {
-            clearContent();
-            navbarFuncs[i]();
-        }
-    });
+for (let i = 0; i < navbarTabs.length; i += 1) {
+  navbarTabs[i].addEventListener('click', () => {
+    clearContent();
+    navbarFuncs[i]();
+  });
+  navbarTabs[i].addEventListener('keydown', (keyPress) => {
+    if (keyPress.keyCode === 13) {
+      clearContent();
+      navbarFuncs[i]();
+    }
+  });
 }
