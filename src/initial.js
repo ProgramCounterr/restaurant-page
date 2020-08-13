@@ -58,7 +58,7 @@ const loadSlideshowDOM = (container, imgs) => {
   rightArrow.textContent = '❯';
   rightArrow.classList.add('right-arrow');
 
-  // make navigation dots
+  // make and add dots and slideshow images
   const dotsContainer = document.createElement('div');
   dotsContainer.setAttribute('id', 'dots');
   for (let i = 0; i < imgs.length; i += 1) {
