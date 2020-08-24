@@ -126,7 +126,7 @@ const slideshow = (() => {
     dots[slideIndex].style.backgroundColor = 'white'; // fill dot corresponding to current slide
   };
 
-  // change slide by n amount and reset timer
+  // change slide by n
   const nextSlide = (n) => {
     displaySlide(slideIndex += n);
   };
@@ -138,6 +138,7 @@ const slideshow = (() => {
 
   let timer;
 
+  // change slide and reset timer
   const arrowClick = (leftOrRight) => {
     if (leftOrRight === 'left') nextSlide(-1);
     else if (leftOrRight === 'right') nextSlide(1);
