@@ -204,7 +204,7 @@ const loadHomePage = () => {
     'https://captainkva.com/images/slider/slider1.jpg',
     'https://bit.ly/2UTed50',
     'https://img.delicious.com.au/wBUwni4k/del/2018/09/seafood-boil-88619-2.jpg',
-    'https://www.simplyrecipes.com/wp-content/uploads/2018/07/Seafood-Paella-HORIZONTAL.jpg'];
+    'https://static.onecms.io/wp-content/uploads/sites/9/2021/03/26/seafood-boil-FT-RECIPE0321.jpg'];
 
   slideshow.initialize(content, slideshowImgs);
 
